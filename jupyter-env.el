@@ -176,6 +176,7 @@ The session can be used to write a connection file, see
         (interrupt-process process)
         ;; Wait until the connection file is cleaned up before
         ;; forgetting about the process completely.
+	(while (process-live-p process))
         (jupyter-with-timeout
             (nil jupyter-default-timeout
                  (delete-file conn-file))
